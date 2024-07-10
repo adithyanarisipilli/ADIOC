@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (req, res) => {
+    console.log("aid");
     res.json({ online: 'compiler' });
 });
 
@@ -23,15 +24,20 @@ app.post("/run", async (req, res) => {
         return res.status(404).json({ success: false, error: "Empty code!" });
     }
     try {
-        const filePath =  generateFile(language, code);
-        const inputPath =  generateInputFile(input);
+        const filePath =  await generateFile(language, code);
+        const inputPath =  await generateInputFile(input);
         const output = await executeCpp(filePath, inputPath);
+        
+// console.log(filePath);
+// console.log(output);
+// console.log(inputPath);
+
         res.json({ filePath, inputPath, output });
     } catch (error) {
         res.status(500).json({ error: error });
     }
 });
 
-app.listen(5000, () => {
-    console.log("Server is listening on port 5000!");
+app.listen(4000, () => {
+    console.log("Server is listening on port 4000!");
 });
