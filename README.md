@@ -11,6 +11,6 @@ An Online Compiler built using the MERN stack that allows users to write, compil
 
 ## Tech Stack
 
-- **Frontend**: React.js with Redux for state management, React Router for navigation.
+- **Frontend**: React.js for UI.
 - **Backend**: Node.js and Express.js for building RESTful APIs.
 - **Containerization**: Docker for isolating and executing user code.
